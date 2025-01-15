@@ -16,11 +16,29 @@ function Portfolio() {
           >
             <i className="fas fa-bars text-2xl"></i>
           </button>
-          <nav
+          {/* Dropdown menu */}
+          <div
             className={`${
               menuOpen ? "block" : "hidden"
-            } md:flex space-x-4 md:space-x-6 mt-4 md:mt-0`}
+            } absolute top-16 left-0 w-full bg-blue-950 md:hidden`}
           >
+            <nav className="flex flex-col space-y-4 p-4">
+              <a href="#about" className="text-lg hover:underline">
+                About Me
+              </a>
+              <a href="#skills" className="text-lg hover:underline">
+                Skills
+              </a>
+              <a href="#portfolio" className="text-lg hover:underline">
+                Portfolio
+              </a>
+              <a href="#contact" className="text-lg hover:underline">
+                Contact
+              </a>
+            </nav>
+          </div>
+          {/* Normal navigation for larger screens */}
+          <nav className="hidden md:flex space-x-6">
             <a href="#about" className="text-lg hover:underline">
               About Me
             </a>
