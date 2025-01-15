@@ -1,24 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function Portfolio() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="bg-gray-50 text-gray-800 font-sans">
       {/* Header Section */}
       <header className="bg-blue-950 text-white py-6">
         <div className="container mx-auto px-6 flex justify-between items-center">
           <h1 className="text-3xl font-bold">Roselyne Osundwa</h1>
-          <nav>
-            <a href="#about" className="text-lg mx-4 hover:underline">
+          <button
+            className="block md:hidden text-white"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <i className="fas fa-bars text-2xl"></i>
+          </button>
+          <nav
+            className={`${
+              menuOpen ? "block" : "hidden"
+            } md:flex space-x-4 md:space-x-6 mt-4 md:mt-0`}
+          >
+            <a href="#about" className="text-lg hover:underline">
               About Me
             </a>
-            <a href="#skills" className="text-lg mx-4 hover:underline">
+            <a href="#skills" className="text-lg hover:underline">
               Skills
             </a>
-            <a href="#portfolio" className="text-lg mx-4 hover:underline">
+            <a href="#portfolio" className="text-lg hover:underline">
               Portfolio
             </a>
-            <a href="#contact" className="text-lg mx-4 hover:underline">
+            <a href="#contact" className="text-lg hover:underline">
               Contact
             </a>
           </nav>
@@ -32,13 +44,11 @@ function Portfolio() {
             <img
               src="/rozzy.jpg"
               alt="Roselyne Osundwa"
-              className="mx-auto rounded shadow-md"
-              style={{ width: "200px", height: "auto" }}
+              className="mx-auto rounded shadow-md w-48 md:w-64"
             />
           </div>
-
           <h2 className="text-2xl font-bold mb-4">About Me</h2>
-          <p className="text-lg leading-relaxed">
+          <p className="text-lg leading-relaxed md:w-3/4 mx-auto">
             Hello, my name is Roselyne Osundwa, and I am a highly organized,
             detail-oriented virtual assistant with a Bachelor's Degree in
             Computing. I have over three years of experience in administrative
@@ -53,34 +63,17 @@ function Portfolio() {
       <section id="skills" className="py-12 bg-gray-100">
         <div className="container mx-auto px-6">
           <h2 className="text-2xl font-bold text-center mb-8">Skills</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-lg">
             <ul className="list-disc list-inside space-y-2">
-              <li>
-                Administrative Support: Email management, scheduling, and travel
-                arrangements
-              </li>
-              <li>
-                Project Management: Planning, executing, and evaluating projects
-              </li>
-              <li>
-                Data Management: Proficient in Excel, Google Sheets, and
-                database systems
-              </li>
-              <li>
-                Digital Marketing: Social media management and SEO optimization
-              </li>
+              <li>Email management, scheduling, and travel arrangements</li>
+              <li>Planning, executing, and evaluating projects</li>
+              <li>Proficient in Excel, Google Sheets, and database systems</li>
+              <li>Social media management and SEO optimization</li>
             </ul>
             <ul className="list-disc list-inside space-y-2">
-              <li>
-                Web Development: MERN Stack (MongoDB, Express.js, React,
-                Node.js)
-              </li>
-              <li>
-                Effective Communication: Writing professional emails and reports
-              </li>
-              <li>
-                Problem Solving: Practical solutions under tight deadlines
-              </li>
+              <li>MERN Stack (MongoDB, Express.js, React, Node.js)</li>
+              <li>Professional email and report writing</li>
+              <li>Practical solutions under tight deadlines</li>
             </ul>
           </div>
         </div>
@@ -90,17 +83,15 @@ function Portfolio() {
       <section id="portfolio" className="py-12 bg-white">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-2xl font-bold mb-4">Portfolio Highlights</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Repeat project cards */}
             <div className="bg-gray-100 p-6 rounded shadow">
               <h3 className="font-bold">Executive Support at @iLabAfrica</h3>
-              <p>
-                Planned, organized, and evaluated training programs, webinars,
-                and events.
-              </p>
+              <p>Planned and organized training programs and events.</p>
             </div>
 
             <div className="bg-gray-100 p-6 rounded shadow">
-              <h3 className="font-bold"> Digital Marketer at @iLabAfrica</h3>
+              <h3 className="font-bold"> Digital Marketer at @FinityEdge</h3>
               <p>
                 Developed marketing plans to enhance brand awareness, drive
                 traffic, and generate leads, while managing the company's social
@@ -108,6 +99,7 @@ function Portfolio() {
                 strategies to boost organic search rankings.
               </p>
             </div>
+
             <div className="bg-gray-100 p-6 rounded shadow">
               <h3 className="font-bold">Career Coaching Platform</h3>
               <p>
@@ -152,19 +144,21 @@ function Portfolio() {
             </div>
 
             <div className="bg-gray-100 p-6 rounded shadow">
-                <h3 className="font-bold">Flicksasa</h3>
-                <p>
-                Developed a movie recommender system using hybrid machine learning with Flask API and an interactive frontend. Integrated user features like liking,
-                disliking, favorites, and admin management to enhance usability
-                </p>
-                <a
-                    href="https://movie-recommender-dun.vercel.app/"
-                    target="_blank"
-                    className="text-blue-600 underline"
-                >
-                    Flicksasa
-                </a>    
-                </div>      
+              <h3 className="font-bold">Flicksasa</h3>
+              <p>
+                Developed a movie recommender system using hybrid machine
+                learning with Flask API and an interactive frontend. Integrated
+                user features like liking, disliking, favorites, and admin
+                management to enhance usability
+              </p>
+              <a
+                href="https://movie-recommender-dun.vercel.app/"
+                target="_blank"
+                className="text-blue-600 underline"
+              >
+                Flicksasa
+              </a>
+            </div>
           </div>
         </div>
       </section>
